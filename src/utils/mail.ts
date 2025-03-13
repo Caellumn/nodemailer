@@ -11,10 +11,10 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-export const sendEmail = async (data:MailData) => {
+export const sendEmail = async (data: MailData) => {
     const mailOptions = {
         from: data.from_email,
-        to: "inesdoggen6@gmail.com",
+        to: "hannahcasier@gmail.com",
         subject: data.subject,
         html: `<!DOCTYPE html>
 <html>

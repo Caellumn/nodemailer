@@ -2,6 +2,7 @@ services:
   - type: web
     name: alien-hairdresser-salon
     env: node
+    plan: free
     buildCommand: chmod +x ./build.sh && ./build.sh
     startCommand: node dist/server.js
     nodeVersion: 18.x

@@ -1,7 +1,7 @@
 // Imports
 import "dotenv/config";
 import cors from "cors";
-import express from "express";
+import express, { Request, Response } from "express";
 import { sendEmail } from "./utils/mail.js";
 import { MailData } from "./types/mailTyps.js";
 
@@ -17,14 +17,15 @@ app.use(express.static("src/public"));
 app.use(express.json());
 
 // Routes
-app.get("/", async (req, res) => {
+app.get("/", async (req: Request, res: Response) => {
   try {
     res.render("index");
   } catch (error) {
     console.error(error);
   }
 });
-app.post("/mail", async (req, res) => {
+
+app.post("/mail", async (req: Request, res: Response) => {
   try {
     // Get all form data
     const { 
