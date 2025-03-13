@@ -59,7 +59,7 @@ export const sendEmail = async (data: MailData) => {
         
         <!-- Footer -->
         <div style="text-align: center; font-size: 12px; color: rgba(255, 255, 255, 0.6); margin-top: 10px; padding: 15px; border-top: 1px solid rgba(0, 242, 255, 0.2);">
-            &copy; 2025 Alien Hairdresser Salon | <a href="https://syntra.be" style="color: #00f2ff; text-decoration: none;">Website</a>
+            &copy; 2025 Alien Hairdresser Salon |for more info checkout our commercial video <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: #00f2ff; text-decoration: none;">Website</a>
         </div>
     </div>
 </body>

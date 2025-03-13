@@ -17,7 +17,7 @@ app.use(express.static("src/public"));
 app.use(express.json());
 
 // Routes
-app.get("/", async (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   try {
     res.render("index");
   } catch (error) {
@@ -25,54 +25,69 @@ app.get("/", async (req: Request, res: Response) => {
   }
 });
 
-app.post("/mail", async (req: Request, res: Response) => {
-  try {
-    // Get all form data
-    const { 
-      name, 
-      voornaam, 
-      date, 
-      haarkleur, 
-      lengte, 
-      gender, 
-      subject, 
-      message,
-      email 
-    } = req.body;
+app.post("/mail", (req: Request, res: Response) => {
+  // Get all form data
+  const { 
+    name, 
+    voornaam, 
+    date, 
+    haarkleur, 
+    lengte, 
+    gender, 
+    subject, 
+    message,
+    email 
+  } = req.body;
+  
+  // Build a more comprehensive message with all form fields
+  const formattedMessage = `
+    Name: ${name}
+    Voornaam: ${voornaam}
+    Appointment Date: ${date}
+    Hair Color: ${haarkleur}
+    Length: ${lengte}
+    Gender: ${gender}
     
-    // Build a more comprehensive message with all form fields
-    const formattedMessage = `
-      Name: ${name}
-      Voornaam: ${voornaam}
-      Appointment Date: ${date}
-      Hair Color: ${haarkleur}
-      Length: ${lengte}
-      Gender: ${gender}
+    Message: ${message}
+  `;
+  
+  // Create email data object with all required fields
+  const emailData: MailData = {
+    from_email: email || `${name}.${voornaam}@example.com`,
+    subject: `Alien Haircut Appointment: ${subject || 'New Appointment'}`,
+    name: name || '',
+    voornaam: voornaam || '',
+    date: date || '',
+    haarkleur: haarkleur || '',
+    lengte: lengte || '',
+    gender: gender || '',
+    message: formattedMessage
+  };
+  
+  // Send the email
+  sendEmail(emailData)
+    .then(() => {
+      // Return JSON response for React clients or regular response for form submissions
+      if (req.headers['content-type']?.includes('application/json')) {
+        res.status(200).json({ success: true, message: "Email sent successfully" });
+      } else {
+        res.status(200).end();
+      }
+    })
+    .catch((error) => {
+      console.error(error);
       
-      Message: ${message}
-    `;
-    
-    // Create email data object with all required fields
-    const emailData: MailData = {
-      from_email: email || `${name}.${voornaam}@example.com`,
-      subject: `Alien Haircut Appointment: ${subject || 'New Appointment'}`,
-      name: name || '',
-      voornaam: voornaam || '',
-      date: date || '',
-      haarkleur: haarkleur || '',
-      lengte: lengte || '',
-      gender: gender || '',
-      message: formattedMessage
-    };
-    
-    // Send the email
-    await sendEmail(emailData);
-    
-    res.status(200).end();
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Failed to send email");
-  }
+      // Return JSON error for React clients or text for form submissions
+      if (req.headers['content-type']?.includes('application/json')) {
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to send email", 
+          error: String(error) 
+        });
+      } else {
+        res.status(500).send("Failed to send email");
+      }
+    });
 });
 
 // Server Listening
