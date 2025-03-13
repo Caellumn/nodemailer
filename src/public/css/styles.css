@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap');
+
+:root {
+  --neon-blue: #00f2ff;
+  --neon-purple: #b700ff;
+  --neon-pink: #ff00e6;
+  --dark-space: #0a0b1e;
+  --space-gray: #1e2140;
+  --light-glow: rgba(0, 242, 255, 0.1);
+  --hover-glow: rgba(183, 0, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background: radial-gradient(ellipse at bottom, var(--space-gray) 0%, var(--dark-space) 100%);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(125deg, rgba(255,0,230,0.05) 15%, transparent 80%),
+    radial-gradient(circle at 85% 25%, rgba(0,242,255,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.form-container {
+  background: rgba(14, 17, 45, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 15px rgba(0, 242, 255, 0.3),
+    0 0 30px rgba(0, 242, 255, 0.1),
+    inset 0 0 10px rgba(183, 0, 255, 0.1);
+  width: 100%;
+  max-width: 550px;
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-container::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(0, 242, 255, 0.06) 40%,
+    rgba(0, 242, 255, 0.06) 60%,
+    transparent 60%
+  );
+  transform: rotate(-35deg);
+  z-index: -1;
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  color: white;
+  text-shadow: 
+    0 0 5px var(--neon-blue),
+    0 0 10px var(--neon-blue);
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-blue),
+    var(--neon-purple),
+    var(--neon-blue),
+    transparent
+  );
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+label {
+  display: block;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+input[type="radio"] {
+  width: auto;
+  margin-right: 15px;
+  accent-color: var(--neon-pink);
+}
+
+input[type="radio"] + label {
+  display: inline;
+  margin: 0 15px 0 3px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(30, 33, 64, 0.7);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  border-radius: 8px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 16px;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 242, 255, 0.1);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 
+    0 0 0 2px rgba(0, 242, 255, 0.1),
+    0 0 8px rgba(0, 242, 255, 0.3);
+  background: rgba(30, 33, 64, 0.9);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input[type="date"] {
+  color-scheme: dark;
+}
+
+button {
+  width: 100%;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+.forbidden{
+  cursor: not-allowed;
+}
+button:hover {
+  box-shadow: 
+    0 0 15px rgba(0, 242, 255, 0.4),
+    0 0 30px rgba(0, 242, 255, 0.2);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+.message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+}
+
+.message.success {
+  background: rgba(0, 255, 187, 0.1);
+  color: #00ffbb;
+  border: 1px solid rgba(0, 255, 187, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 187, 0.2);
+}
+
+.message.error {
+  background: rgba(255, 0, 106, 0.1);
+  color: #ff006a;
+  border: 1px solid rgba(255, 0, 106, 0.3);
+  box-shadow: 0 0 10px rgba(255, 0, 106, 0.2);
+}
+
+/* Gender radio buttons styling */
+.form-group:has(input[type="radio"]) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.form-group:has(input[type="radio"]) > label:first-child {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Add some space elements */
+.form-container::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(183, 0, 255, 0.1) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--neon-blue);
+  border-radius: 4px;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  background: rgba(30, 33, 64, 0.7);
+}
+
+input[type="checkbox"]:checked {
+  background: var(--neon-purple);
+}
+
+input[type="checkbox"]:checked::before {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Color Picker Styling */
+.pickr {
+  width: 100%;
+}
+
+.pickr .pcr-button {
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.pickr .pcr-button:hover {
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+  border-color: var(--neon-blue);
+}
+
+.pickr .pcr-button::before {
+  border-radius: 6px;
+}
+
+.pcr-app {
+  background: rgba(14, 17, 45, 0.95) !important;
+  border: 1px solid var(--neon-blue) !important;
+  border-radius: 12px !important;
+  box-shadow: 
+    0 0 20px rgba(0, 242, 255, 0.4),
+    0 0 40px rgba(0, 242, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+}
+
+.pcr-app .pcr-interaction input {
+  color: white !important;
+  background: rgba(30, 33, 64, 0.7) !important;
+  border: 1px solid rgba(0, 242, 255, 0.3) !important;
+  border-radius: 6px !important;
+}
+
+.pcr-app .pcr-interaction .pcr-save {
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  font-family: 'Orbitron', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3) !important;
+}
+
+.pcr-app .pcr-interaction .pcr-save:hover {
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.5) !important;
+}
+
+.pcr-app .pcr-interaction .pcr-clear {
+  color: white !important;
+  border: 1px solid rgba(255, 0, 106, 0.5) !important;
+}
+
+.pcr-app .pcr-interaction .pcr-clear:hover {
+  background: rgba(255, 0, 106, 0.2) !important;
+}
+
+/* Custom swatch styling */
+.pcr-app .pcr-swatches > button {
+  border-radius: 8px !important;
+  box-shadow: 0 0 5px rgba(0, 242, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.pcr-app .pcr-swatches > button:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 8px rgba(0, 242, 255, 0.5) !important;
+}

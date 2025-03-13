@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alien Hairdresser Salon - Email Confirmation</title>
+    <style>
+        /* Sci-fi hairdresser salon theme with nested CSS */
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-purple: #b700ff;
+            --neon-pink: #ff00e6;
+            --dark-space: #0a0b1e;
+            --space-gray: #1e2140;
+            --light-glow: rgba(0, 242, 255, 0.1);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: radial-gradient(ellipse at bottom, var(--space-gray) 0%, var(--dark-space) 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+
+            &::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: 
+                    linear-gradient(125deg, rgba(255,0,230,0.05) 15%, transparent 80%),
+                    radial-gradient(circle at 85% 25%, rgba(0,242,255,0.1) 0%, transparent 50%);
+                pointer-events: none;
+                z-index: -1;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(14, 17, 45, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 0;
+            border-radius: 16px;
+            box-shadow: 
+                0 0 15px rgba(0, 242, 255, 0.3),
+                0 0 30px rgba(0, 242, 255, 0.1),
+                inset 0 0 10px rgba(183, 0, 255, 0.1);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(
+                    45deg,
+                    transparent 40%,
+                    rgba(0, 242, 255, 0.06) 40%,
+                    rgba(0, 242, 255, 0.06) 60%,
+                    transparent 60%
+                );
+                transform: rotate(-35deg);
+                z-index: -1;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -100px;
+                right: -100px;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(183, 0, 255, 0.1) 0%, transparent 70%);
+                filter: blur(20px);
+                z-index: -1;
+            }
+        }
+
+        .header {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-radius: 16px 16px 0 0;
+            position: relative;
+            text-shadow: 
+                0 0 5px var(--neon-blue),
+                0 0 10px var(--neon-blue);
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 25%;
+                width: 50%;
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--neon-blue),
+                    var(--neon-purple),
+                    var(--neon-blue),
+                    transparent
+                );
+            }
+        }
+
+        .content {
+            padding: 25px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+
+            p {
+                margin-bottom: 15px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            a {
+                color: var(--neon-blue);
+                text-decoration: none;
+                position: relative;
+                
+                &:hover {
+                    text-shadow: 0 0 8px var(--neon-blue);
+                }
+            }
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+
+            &:hover {
+                box-shadow: 
+                    0 0 15px rgba(0, 242, 255, 0.4),
+                    0 0 30px rgba(0, 242, 255, 0.2);
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent
+                );
+                transition: all 0.6s ease;
+            }
+
+            &:hover::before {
+                left: 100%;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 10px;
+            padding: 15px;
+            border-top: 1px solid rgba(0, 242, 255, 0.2);
+
+            a {
+                color: var(--neon-blue);
+                text-decoration: none;
+                
+                &:hover {
+                    text-shadow: 0 0 8px var(--neon-blue);
+                }
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                margin: 10px auto;
+            }
+
+            .header {
+                font-size: 18px;
+                padding: 15px;
+            }
+
+            .content {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Alien Hairdresser Salon</div>
+        <div class="content">
+            <p>Beste ${data.name} 🤖,</p>
+            <p>Bedankt voor je interesse in Alien hairdress Salon 👾</p>
+            <p>thanks voor je aanvraag 🚀, en zullen contact opnemen om de afspraak te bevestigen 🛸</p>
+            <p>Je hebt volgende gegevens gegeven: <br>${data.name} ${data.voornaam} <br>${data.date} <br>${data.haarkleur} <br>${data.lengte} <br>${data.gender} </p>
+            <p>je had volgende opmerkingen gegeven: ${data.message}</p>
+            <p>Indien je nog iets vergeten bent laat het ons gerust weten en we komen er zo snel op terug het kan wel enkele lichtjaren duren voor we terug komen</p>
+            <p>als je nog vragen hebt 🔫 en we zullen er zo snel mogelijk op antwoorden ☄️🌠 </p>
+            <p>Met vriendelijke groet,<br>het Alien hairdress Salon Team 🖖</p>
+        </div>
+        <div class="footer">
+            &copy; 2025 Alien Hairdresser Salon | <a href="https://syntra.be">Website</a>
+        </div>
+    </div>
+</body>
+</html>
