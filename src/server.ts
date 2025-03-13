@@ -9,8 +9,15 @@ import { MailData } from "./types/mailTyps.js";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configure CORS to allow requests from your React app
+const corsOptions = {
+  origin: ['http://localhost:5173', 'http://localhost:3000', 'https://nodemailer-alien-hairdress-salon.onrender.com'],
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.set("view engine", "ejs");
 app.set("views", "src/views");
 app.use(express.static("src/public"));
@@ -89,6 +96,9 @@ app.post("/mail", (req: Request, res: Response) => {
       }
     });
 });
+
+// Options route for preflight requests
+app.options('/mail', cors(corsOptions));
 
 // Server Listening
 app.listen(PORT, () => {
