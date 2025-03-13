@@ -1,9 +1,14 @@
 import "dotenv/config";
 
-const { SMTP_HOST, SMTP_USER, SMTP_PASS } = process.env;
+// Get environment variables
+const { SMTP_USER, SMTP_PASS } = process.env;
 
-if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
-  throw new Error("SMTP_HOST, SMTP_USER, SMTP_PASS are required");
+// Validate required environment variables
+if (!SMTP_USER || !SMTP_PASS) {
+  throw new Error("SMTP_USER and SMTP_PASS environment variables are required");
 }
 
-export { SMTP_HOST, SMTP_USER, SMTP_PASS };
+// Export for use in other files
+export const SMTP_HOST = "smtp.gmail.com"; // Gmail SMTP server
+export const smtpEmail = SMTP_USER;
+export const smtpPassword = SMTP_PASS;

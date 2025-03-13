@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: alien-hairdresser-salon
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    nodeVersion: 18.x
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production

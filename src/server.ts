@@ -2,8 +2,8 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import { sendEmail } from "./utils/mail";
-import { MailData } from "./types/mailTyps";
+import { sendEmail } from "./utils/mail.js";
+import { MailData } from "./types/mailTyps.js";
 
 // Variables
 const app = express();
@@ -53,15 +53,15 @@ app.post("/mail", async (req, res) => {
     
     // Create email data object with all required fields
     const emailData: MailData = {
-      from_email: `${name}.${voornaam}@example.com`,
-      subject: `Alien Haircut Appointment: ${subject}`,
-      name: `${name} ${voornaam}`,
-      message: formattedMessage,
-      voornaam: voornaam,
-      date: date,
-      haarkleur: haarkleur,
-      lengte: lengte,
-      gender: gender
+      from_email: email || `${name}.${voornaam}@example.com`,
+      subject: `Alien Haircut Appointment: ${subject || 'New Appointment'}`,
+      name: name || '',
+      voornaam: voornaam || '',
+      date: date || '',
+      haarkleur: haarkleur || '',
+      lengte: lengte || '',
+      gender: gender || '',
+      message: formattedMessage
     };
     
     // Send the email

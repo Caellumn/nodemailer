@@ -1,18 +1,16 @@
-import {SMTP_HOST, SMTP_USER, SMTP_PASS} from "./envs";
 import nodemailer from "nodemailer";
-import {MailData} from "../types/mailTyps";
+import { MailData } from "../types/mailTyps.js";
+import { smtpEmail, smtpPassword } from "./envs.js";
 
 const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: 587,
-    secure: false,
+    service: "gmail",
+    secure: true,
     auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS
+      user: smtpEmail,
+      pass: smtpPassword,
     }
 });
 
-// inline css gebruikt want style tag werkte niet
 export const sendEmail = async (data:MailData) => {
     const mailOptions = {
         from: data.from_email,
@@ -69,10 +67,9 @@ export const sendEmail = async (data:MailData) => {
     };
 
     try {
-        await transporter.sendMail(mailOptions);
-        return true;
+      await transporter.sendMail(mailOptions);
+      console.log("Email sent! 🚀")
     } catch (error) {
-        console.error(error);
-        return false;
+        throw error;
     }
 }
