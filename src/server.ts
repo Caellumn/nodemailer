@@ -43,7 +43,8 @@ app.post("/mail", (req: Request, res: Response) => {
     gender, 
     subject, 
     message,
-    email 
+    email,
+    to_email
   } = req.body;
   
   // Build a more comprehensive message with all form fields
@@ -68,7 +69,8 @@ app.post("/mail", (req: Request, res: Response) => {
     haarkleur: haarkleur || '',
     lengte: lengte || '',
     gender: gender || '',
-    message: formattedMessage
+    message: formattedMessage,
+    to_email: to_email || 'argaenth@gmail.com'
   };
   
   // Send the email

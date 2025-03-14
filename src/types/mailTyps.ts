@@ -8,4 +8,5 @@ export interface MailData {
     haarkleur: string;
     lengte: string;
     gender: string;
+    to_email:string;
   }
